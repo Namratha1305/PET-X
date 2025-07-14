@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost & Found - PetX</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.png" alt="PetX Logo" class="petx-logo" />
+                <span>PetX</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item" id="dashboardNavItem" style="display:none;"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                <li class="nav-item"><button class="login-btn" id="loginLogoutBtn" onclick="openLoginModal()">Login</button></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="lost-found-board" style="padding:5rem 0;">
+        <div class="container">
+            <h1 class="section-title"><i class="fas fa-search"></i> Lost & Found Board</h1>
+            <p>Browse recent lost and found pet reports in your area. If you have lost or found a pet, please report it below to help reunite families!</p>
+            <div class="lost-found-listings" style="margin:2rem 0;">
+                <div class="lost-found-item" style="background:#f8f9fa;padding:1.5rem;border-radius:10px;margin-bottom:1rem;">
+                    <strong>Lost:</strong> Golden Retriever, Male, 3 years old, last seen near City Park. <br>
+                    <em>Contact: 555-123-4567</em>
+                </div>
+                <div class="lost-found-item" style="background:#f8f9fa;padding:1.5rem;border-radius:10px;margin-bottom:1rem;">
+                    <strong>Found:</strong> Grey Tabby Cat, Female, found near Main Street. <br>
+                    <em>Contact: 555-987-6543</em>
+                </div>
+            </div>
+            <a href="#report" class="btn btn-primary">Report Lost/Found Pet</a>
+        </div>
+    </section>
+    <section id="report" class="lost-found-report" style="padding:3rem 0;background:#fff;">
+        <div class="container">
+            <h2 class="section-title">Report Lost or Found Pet</h2>
+            <form class="lost-found-form" style="max-width:500px;margin:0 auto;text-align:left;">
+                <div class="form-group">
+                    <label for="type">Type:</label>
+                    <select id="type" name="type" required>
+                        <option value="lost">Lost</option>
+                        <option value="found">Found</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="pet">Pet Description:</label>
+                    <input type="text" id="pet" name="pet" placeholder="e.g. Brown dog, Labrador, 2 years old" required>
+                </div>
+                <div class="form-group">
+                    <label for="location">Last Seen/Found Location:</label>
+                    <input type="text" id="location" name="location" placeholder="e.g. Near Central Park" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact">Contact Info:</label>
+                    <input type="text" id="contact" name="contact" placeholder="e.g. 555-123-4567" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Report</button>
+            </form>
+            <a href="index.html" class="btn btn-secondary" style="margin-top:2rem;display:inline-block;">&larr; Back to Home</a>
+        </div>
+    </section>
+    <script>
+    // Login state persistence and dashboard link logic
+    function updateLoginState(isLoggedIn) {
+        const loginBtn = document.getElementById('loginLogoutBtn');
+        const dashboardNavItem = document.getElementById('dashboardNavItem');
+        if (isLoggedIn) {
+            loginBtn.textContent = 'Logout';
+            loginBtn.onclick = handleLogout;
+            dashboardNavItem.style.display = '';
+        } else {
+            loginBtn.textContent = 'Login';
+            loginBtn.onclick = openLoginModal;
+            dashboardNavItem.style.display = 'none';
+        }
+    }
+    function handleLogout() {
+        localStorage.removeItem('petxLoggedIn');
+        updateLoginState(false);
+        alert('You have been logged out.');
+    }
+    function openLoginModal() {
+        alert('Please return to the home page to log in.');
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+        const isLoggedIn = localStorage.getItem('petxLoggedIn') === 'true';
+        updateLoginState(isLoggedIn);
+    });
+    </script>
+</body>
+</html> 

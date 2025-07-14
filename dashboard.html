@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - PetX</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.png" alt="PetX Logo" class="petx-logo" />
+                <span>PetX</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><button class="login-btn" id="loginLogoutBtn">Logout</button></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="dashboard-section" style="padding:5rem 0;">
+        <div class="container" style="max-width:600px;margin:0 auto;">
+            <h1 class="section-title"><i class="fas fa-user"></i> My Dashboard</h1>
+            <div id="dashboardContent">
+                <p>Welcome, <span id="userEmail">demo@petx.com</span>!</p>
+                <h2>Your Configurations</h2>
+                <ul style="margin-bottom:2rem;">
+                    <li><strong>Email:</strong> demo@petx.com</li>
+                    <li><strong>Preferred Contact:</strong> 555-123-4567</li>
+                </ul>
+                <h2>Upcoming Appointment Timings</h2>
+                <ul>
+                    <li>Veterinary Checkup: Monday, 10:00 AM</li>
+                    <li>Grooming: Wednesday, 2:00 PM</li>
+                    <li>Boarding Drop-off: Friday, 9:00 AM</li>
+                </ul>
+            </div>
+            <a href="index.html" class="btn btn-secondary" style="margin-top:2rem;display:inline-block;">&larr; Back to Home</a>
+        </div>
+    </section>
+    <script>
+    // Only allow access if logged in
+    function updateLoginState(isLoggedIn) {
+        const loginBtn = document.getElementById('loginLogoutBtn');
+        if (isLoggedIn) {
+            loginBtn.textContent = 'Logout';
+            loginBtn.onclick = handleLogout;
+        } else {
+            loginBtn.textContent = 'Login';
+            loginBtn.onclick = () => { window.location.href = 'index.html'; };
+            document.getElementById('dashboardContent').innerHTML = '<p>You must be logged in to view your dashboard.</p>';
+        }
+    }
+    function handleLogout() {
+        localStorage.removeItem('petxLoggedIn');
+        updateLoginState(false);
+        alert('You have been logged out.');
+        window.location.href = 'index.html';
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+        const isLoggedIn = localStorage.getItem('petxLoggedIn') === 'true';
+        updateLoginState(isLoggedIn);
+    });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - PetX</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.png" alt="PetX Logo" class="petx-logo" />
+                <span>PetX</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="payment-form-section" style="padding:5rem 0;background:#f8f9fa;">
+        <div class="container" style="max-width:500px;margin:0 auto;">
+            <h1 class="section-title"><i class="fas fa-credit-card"></i> Payment</h1>
+            <p>Enter your payment details below to pay for your pet's services. (This is a demo form; no real payment will be processed.)</p>
+            <form class="payment-form" id="paymentForm" style="margin-top:2rem;text-align:left;">
+                <div class="form-group">
+                    <label for="name">Name on Card:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="card">Card Number:</label>
+                    <input type="text" id="card" name="card" maxlength="19" placeholder="1234 5678 9012 3456" required>
+                </div>
+                <div class="form-group" style="display:flex;gap:1rem;">
+                    <div style="flex:1;">
+                        <label for="expiry">Expiry:</label>
+                        <input type="text" id="expiry" name="expiry" maxlength="5" placeholder="MM/YY" required>
+                    </div>
+                    <div style="flex:1;">
+                        <label for="cvv">CVV:</label>
+                        <input type="password" id="cvv" name="cvv" maxlength="4" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email for Receipt:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="desc">Payment Description:</label>
+                    <input type="text" id="desc" name="desc" placeholder="e.g. Food Packet, Veterinary Checkup" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%;margin-top:1.5rem;">Pay Now</button>
+            </form>
+            <a href="index.html" class="btn btn-secondary" style="margin-top:2rem;display:inline-block;">&larr; Back to Home</a>
+        </div>
+    </section>
+    <script>
+// Save payment to localStorage and redirect to home
+function getPaymentHistory() {
+    return JSON.parse(localStorage.getItem('petxPaymentHistory') || '[]');
+}
+function addPaymentHistory(item) {
+    const history = getPaymentHistory();
+    history.unshift(item);
+    localStorage.setItem('petxPaymentHistory', JSON.stringify(history));
+}
+document.getElementById('paymentForm').onsubmit = function(e) {
+    e.preventDefault();
+    const desc = document.getElementById('desc').value || 'Service Payment';
+    const now = new Date();
+    const istOffset = 5.5 * 60 * 60 * 1000;
+    const istDate = new Date(now.getTime() + istOffset - now.getTimezoneOffset() * 60000);
+    const dateStr = istDate.toLocaleString('en-IN', { hour: '2-digit', minute: '2-digit', weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' });
+    addPaymentHistory({ description: desc, date: dateStr });
+    alert('Payment successful!');
+    window.location.href = 'index.html';
+};
+</script>
+</body>
+</html> 
