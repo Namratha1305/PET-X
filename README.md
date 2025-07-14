@@ -21,8 +21,8 @@ A modern, interactive website for comprehensive pet care services featuring AI-p
 ### 🗺️ Location Map
 - **Google Maps Integration**: Embedded interactive map showing PetX location
 - **Contact Information**: Complete business details including:
-  - Address: 123 Pet Street, Animal City, AC 12345
-  - Phone: (555) 123-4567
+  - Address: Vidyaranyapura, Bengaluru, KA, India
+  - Phone: +91 6360275044
   - Email: info@petx.com
   - Business hours for all days of the week
 
@@ -190,8 +190,8 @@ This project is created for demonstration purposes. Feel free to use and modify 
 
 For questions or support:
 - Email: info@petx.com
-- Phone: (555) 123-4567
-- Visit: 123 Pet Street, Animal City, AC 12345
+- Phone: +91 6360275044
+- Visit: Vidyaranyapura, Bengaluru, KA, India
 
 ---
 
