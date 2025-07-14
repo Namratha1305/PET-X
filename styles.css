@@ -68,21 +68,37 @@ body {
 
 .nav-menu {
     display: flex;
-    list-style: none;
+    flex-direction: row;
     gap: 2rem;
+    list-style: none;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0;
+    padding: 0;
     background: var(--primary-blue);
 }
 
 .nav-link {
+    color: #fff !important;
     text-decoration: none;
-    color: var(--white) !important;
-    font-weight: 500;
-    transition: color 0.3s ease;
-    background: var(--primary-blue);
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    background: none;
+    display: inline-block;
 }
 
-.nav-link:hover {
-    color: var(--white) !important;
+.nav-link:hover,
+.nav-link:focus {
+    background: var(--primary-orange);
+    color: #fff;
+    text-decoration: none;
 }
 
 .login-btn {
@@ -1000,7 +1016,7 @@ body {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .hamburger {
         display: flex;
     }
@@ -1084,10 +1100,63 @@ body {
 }
 
 @media (max-width: 900px) {
-    .nearby-listings {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
+  .container {
+    padding: 0 8px;
+  }
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    text-align: center;
+  }
+  .nearby-listings {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    text-align: center;
+  }
+  .about-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .map-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .map-frame, .nearby-map {
+    margin: 0 auto;
+    width: 100%;
+    min-width: 0;
+  }
+  .faq-container {
+    max-width: 100%;
+    padding: 0 8px;
+  }
+  .dashboard-card {
+    max-width: 98vw;
+    padding: 1.2rem 0.5rem 1.5rem 0.5rem;
+  }
+  .dashboard-section {
+    padding-top: 80px;
+    padding-bottom: 30px;
+  }
+  .lost-found-actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .footer-section {
+    text-align: center;
+  }
 }
 
 @media (max-width: 480px) {
