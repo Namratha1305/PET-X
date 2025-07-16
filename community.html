@@ -336,21 +336,11 @@
                 <span>PetX</span>
             </div>
             <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="index.html" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="index.html#about" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="index.html#faq" class="nav-link">FAQ</a>
-                </li>
-                <li class="nav-item">
-                    <a href="community.html" class="nav-link active">Community</a>
-                </li>
-                <li class="nav-item" id="dashboardNavItem" style="display:none;">
-                    <button class="login-btn" onclick="showDashboardSection()">Dashboard</button>
-                </li>
+                <li class="nav-item"><a href="#features" class="nav-link">Community Features</a></li>
+                <li class="nav-item"><a href="#posts" class="nav-link">Posts</a></li>
+                <li class="nav-item"><a href="#share" class="nav-link">Share</a></li>
+                <li class="nav-item"><a href="#guidelines" class="nav-link">Guidelines</a></li>
+                <li class="nav-item"><a href="dashboard.html" class="login-btn">Dashboard</a></li>
                 <li class="nav-item">
                     <button class="login-btn" id="loginLogoutBtn" onclick="openLoginModal()">Login</button>
                 </li>
@@ -394,7 +384,7 @@
     </section>
 
     <!-- Community Features -->
-    <section class="community-features">
+    <section class="community-features" id="features">
         <div class="container">
             <h2 class="section-title">Community Features</h2>
             <div class="features-grid">
@@ -431,7 +421,7 @@
     </section>
 
     <!-- Community Posts -->
-    <section class="community-posts">
+    <section class="community-posts" id="posts">
         <div class="container">
             <h2 class="section-title">Recent Community Posts</h2>
             <div class="posts-grid">
@@ -495,7 +485,7 @@
     </section>
 
     <!-- Create Post Section -->
-    <section class="create-post-section">
+    <section class="create-post-section" id="share">
         <div class="container">
             <h2 class="section-title">Share Your Story</h2>
             <div class="create-post-card">
@@ -515,7 +505,7 @@
     </section>
 
     <!-- Community Guidelines -->
-    <section class="community-guidelines">
+    <section class="community-guidelines" id="guidelines">
         <div class="container">
             <h2 class="section-title">Community Guidelines</h2>
             <div class="guidelines-grid">
@@ -544,7 +534,7 @@
     </section>
 
     <!-- Join Community CTA -->
-    <section class="join-community">
+    <section class="join-community" id="join">
         <div class="container">
             <div class="join-content">
                 <h2>Ready to Join Our Community?</h2>
@@ -595,6 +585,35 @@
             </div>
         </div>
     </footer>
+
+    <!-- Dashboard Section (hidden by default) -->
+    <section id="dashboard-section" class="dashboard-section" style="display:flex; justify-content:center; align-items:center; min-height:300px; background:transparent; box-shadow:none;">
+      <a href="index.html#dashboard-section" class="login-btn" style="font-size:1.2rem; padding:1rem 2.5rem; display:inline-block;">My Dashboard</a>
+    </section>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <div class="login-container">
+                <h2>Login to PetX</h2>
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+                <p class="login-footer">
+                    Don't have an account? <a href="#" onclick="showRegister()">Sign up</a>
+                </p>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
