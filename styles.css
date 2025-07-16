@@ -95,13 +95,14 @@ body {
 }
 
 .nav-link:hover,
-.nav-link:focus {
-    background: var(--primary-orange);
-    color: #fff;
+.nav-link:focus,
+.nav-link:active {
+    background: var(--primary-orange) !important;
+    color: #fff !important;
     text-decoration: none;
 }
 
-.login-btn {
+.login-btn, a.login-btn {
     background: var(--primary-orange);
     color: var(--white) !important;
     border: none;
@@ -110,7 +111,10 @@ body {
     cursor: pointer;
     font-weight: 500;
     transition: all 0.3s ease;
-    background: var(--primary-orange);
+    text-decoration: none !important;
+    font-family: inherit;
+    font-size: 1rem;
+    display: inline-block;
 }
 
 .login-btn:hover {
@@ -454,7 +458,7 @@ body {
 
 .faq-question:hover {
     background: var(--white);
-    color: var(--primary-orange);
+    color: #000000;
 }
 
 .faq-question h3 {
@@ -522,7 +526,7 @@ body {
 }
 
 .close:hover {
-    color: var(--white);
+    color: #000000;
 }
 
 .login-container {
@@ -574,7 +578,7 @@ body {
 }
 
 .login-footer a:hover {
-    color: var(--white);
+    color: #000000;
 }
 
 /* Chatbot */
@@ -741,7 +745,7 @@ body {
 }
 
 .footer-section a:hover {
-    color: var(--white);
+    color: #000000;
 }
 
 .social-links {
@@ -761,8 +765,8 @@ body {
 }
 
 .social-links a:hover {
-    background: var(--white);
-    color: var(--primary-orange);
+    background: var(--primary-orange);
+    color: #000000;
     transform: translateY(-3px);
 }
 
@@ -1104,9 +1108,9 @@ body {
     padding: 0 8px;
   }
   .footer-content {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    text-align: center;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    text-align: left;
   }
   .nearby-listings {
     flex-direction: column;
@@ -1288,4 +1292,34 @@ input::placeholder, textarea::placeholder {
 }
 .about-stats .fa-star {
   color: #FFD700 !important; /* Golden Yellow */
+} 
+
+@media (max-width: 900px) {
+  .hero-title {
+    color: #fff !important;
+  }
+}
+@media (max-width: 768px) {
+  .hero-title {
+    color: #fff !important;
+  }
+}
+@media (max-width: 600px) {
+  .hero-title {
+    color: #fff !important;
+  }
+}
+@media (max-width: 480px) {
+  .hero-title {
+    color: #fff !important;
+  }
+} 
+
+@media (max-width: 900px) {
+  .nav-link:active,
+  .nav-link.active,
+  .nav-link:focus {
+    background: var(--primary-orange) !important;
+    color: #fff !important;
+  }
 } 
