@@ -20,22 +20,29 @@
             </ul>
         </div>
     </nav>
-    <section class="dashboard-section" style="padding:5rem 0;">
-        <div class="container" style="max-width:600px;margin:0 auto;">
+    <section class="dashboard-section">
+        <div class="dashboard-card">
             <h1 class="section-title"><i class="fas fa-user"></i> My Dashboard</h1>
             <div id="dashboardContent">
                 <p>Welcome, <span id="userEmail">demo@petx.com</span>!</p>
                 <h2>Your Configurations</h2>
-                <ul style="margin-bottom:2rem;">
-                    <li><strong>Email:</strong> demo@petx.com</li>
-                    <li><strong>Preferred Contact:</strong> 555-123-4567</li>
+                <ul class="dashboard-config-list">
+                    <li><span><strong>Email:</strong></span> <span>demo@petx.com</span></li>
+                    <li><span><strong>Preferred Contact:</strong></span> <span>555-123-4567</span></li>
                 </ul>
-                <h2>Upcoming Appointment Timings</h2>
-                <ul>
-                    <li>Veterinary Checkup: Monday, 10:00 AM</li>
-                    <li>Grooming: Wednesday, 2:00 PM</li>
-                    <li>Boarding Drop-off: Friday, 9:00 AM</li>
+                <h2>Payment History</h2>
+                <div class="dashboard-timezone">All timings are in IST (Indian Standard Time)</div>
+                <ul class="dashboard-timings-list">
+                    <li><span>Veterinary Checkup:</span> <span>Paid, Monday, 10:00 AM IST</span></li>
+                    <li><span>Grooming:</span> <span>Paid, Wednesday, 2:00 PM IST</span></li>
+                    <li><span>Boarding Drop-off:</span> <span>Paid, Friday, 9:00 AM IST</span></li>
                 </ul>
+                <!-- Payment Section -->
+                <div class="dashboard-payment-section">
+                    <h2>Make a Payment</h2>
+                    <p>Pay for your pet's services securely. Click below to proceed to the payment page.</p>
+                    <a href="payment.html" class="btn btn-primary">Go to Payment</a>
+                </div>
             </div>
             <a href="index.html" class="btn btn-secondary" style="margin-top:2rem;display:inline-block;">&larr; Back to Home</a>
         </div>
