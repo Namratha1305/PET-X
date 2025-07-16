@@ -340,6 +340,34 @@ function addInteractiveElements() {
     });
 }
 
+// Add active class to nav-link on click (mobile/tablet only)
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href && href.startsWith('#')) {
+            e.preventDefault();
+            // Hide dashboard section if open
+            const dashboardSection = document.getElementById('dashboard-section');
+            if (dashboardSection) dashboardSection.style.display = 'none';
+            // Show the target section
+            const target = document.querySelector(href);
+            if (target) {
+                target.style.display = '';
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            // Show all main sections except dashboard
+            [
+                'home', 'services', 'nearby-services', 'lost-found', 'faq', 'payment', 'about', 'map'
+            ].forEach(id => {
+                if (href !== '#' + id) {
+                    const el = document.getElementById(id);
+                    if (el) el.style.display = 'none';
+                }
+            });
+        }
+    });
+});
+
 // Add some pet-related tips that cycle through
 const petTips = [
     "💡 Tip: Regular dental care can add 2-4 years to your pet's life!",
@@ -424,7 +452,7 @@ function renderDashboard() {
 function showDashboardSection() {
     document.getElementById('dashboard-section').style.display = '';
     [
-        'home', 'services', 'nearby-services', 'lost-found', 'faq', 'payment', 'map', 'map-section', 'about'
+        'home', 'services', 'nearby-services', 'lost-found', 'faq', 'payment', 'about', 'map'
     ].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.style.display = 'none';
@@ -437,7 +465,7 @@ function hideDashboardSection() {
     document.getElementById('dashboard-section').style.display = 'none';
     // Show all other main sections
     [
-        'home', 'services', 'nearby-services', 'lost-found', 'faq', 'payment', 'map-section', 'about'
+        'home', 'services', 'nearby-services', 'lost-found', 'faq', 'payment', 'about', 'map'
     ].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.style.display = '';
